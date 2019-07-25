@@ -1,0 +1,1 @@
+{"pulse_pause": 1, "pulse_start": 0.02, "amplitude": 4e-09, "ntrials": 40, "pulse_duration": 0.1, "dt": 5e-05, "kernel_size": 4000}
