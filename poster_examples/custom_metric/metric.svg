@@ -4,25 +4,11 @@
 <g font-family="monospace" font-size="14px">
 <text x="0" y="14" xml:space="preserve"><tspan fill="#008000" font-weight="bold">class</tspan>&#160;<tspan fill="#0000FF" font-weight="bold">CustomMetric</tspan>(TraceMetric):</text>
 <text x="0" y="33" xml:space="preserve">&#160;&#160;&#160;&#160;<tspan fill="#008000" font-weight="bold">def</tspan>&#160;<tspan fill="#0000FF">get_features</tspan>(<tspan fill="#008000">self</tspan>,&#160;traces,&#160;output,&#160;n_traces,&#160;dt):</text>
-<text x="0" y="52" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;mselist&#160;<tspan fill="#666666">=</tspan>&#160;[]</text>
-<text x="0" y="71" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;output&#160;<tspan fill="#666666">=</tspan>&#160;atleast_2d(output)</text>
-<text x="0" y="90" xml:space="preserve"></text>
-<text x="0" y="109" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan fill="#008000" font-weight="bold">for</tspan>&#160;i&#160;<tspan fill="#AA22FF" font-weight="bold">in</tspan>&#160;arange(n_traces):</text>
-<text x="0" y="128" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;temp_out&#160;<tspan fill="#666666">=</tspan>&#160;np<tspan fill="#666666">.</tspan>diff(output[i])</text>
-<text x="0" y="147" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;temp_traces&#160;<tspan fill="#666666">=</tspan>&#160;traces[i::n_traces]</text>
-<text x="0" y="166" xml:space="preserve"></text>
-<text x="0" y="185" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan fill="#008000" font-weight="bold">for</tspan>&#160;trace&#160;<tspan fill="#AA22FF" font-weight="bold">in</tspan>&#160;temp_traces:</text>
-<text x="0" y="204" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;trace&#160;<tspan fill="#666666">=</tspan>&#160;np<tspan fill="#666666">.</tspan>diff(trace)</text>
-<text x="0" y="223" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text>
-<text x="0" y="242" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;mse&#160;<tspan fill="#666666">=</tspan>&#160;<tspan fill="#008000">sum</tspan>(square(temp_out&#160;<tspan fill="#666666">-</tspan>&#160;trace))</text>
-<text x="0" y="261" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;mselist<tspan fill="#666666">.</tspan>append(mse)</text>
-<text x="0" y="280" xml:space="preserve"></text>
-<text x="0" y="299" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;feat_arr&#160;<tspan fill="#666666">=</tspan>&#160;reshape(array(mselist),&#160;(n_traces,</text>
-<text x="0" y="318" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan fill="#008000">int</tspan>(<tspan fill="#008000">len</tspan>(mselist)<tspan fill="#666666">/</tspan>n_traces)))</text>
-<text x="0" y="337" xml:space="preserve"></text>
-<text x="0" y="356" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan fill="#008000" font-weight="bold">return</tspan>&#160;feat_arr</text>
-<text x="0" y="375" xml:space="preserve"></text>
-<text x="0" y="394" xml:space="preserve">&#160;&#160;&#160;&#160;<tspan fill="#008000" font-weight="bold">def</tspan>&#160;<tspan fill="#0000FF">get_errors</tspan>(<tspan fill="#008000">self</tspan>,&#160;features):</text>
-<text x="0" y="413" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;errors&#160;<tspan fill="#666666">=</tspan>&#160;features<tspan fill="#666666">.</tspan>mean(axis<tspan fill="#666666">=</tspan><tspan fill="#666666">0</tspan>)</text>
-<text x="0" y="432" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan fill="#008000" font-weight="bold">return</tspan>&#160;errors</text>
-<text x="0" y="451" xml:space="preserve"></text></g></svg>
+<text x="0" y="52" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;traces&#160;<tspan fill="#666666">=</tspan>&#160;np<tspan fill="#666666">.</tspan>reshape(traces,&#160;(traces<tspan fill="#666666">.</tspan>shape[<tspan fill="#666666">0</tspan>]<tspan fill="#666666">/</tspan><tspan fill="#666666">/</tspan>n_traces,&#160;n_traces,&#160;<tspan fill="#666666">-</tspan><tspan fill="#666666">1</tspan>))</text>
+<text x="0" y="71" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;diff_traces&#160;<tspan fill="#666666">=</tspan>&#160;np<tspan fill="#666666">.</tspan>diff(traces,&#160;axis<tspan fill="#666666">=</tspan><tspan fill="#666666">2</tspan>)</text>
+<text x="0" y="90" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;diff_out&#160;<tspan fill="#666666">=</tspan>&#160;np<tspan fill="#666666">.</tspan>diff(output,&#160;axis<tspan fill="#666666">=</tspan><tspan fill="#666666">1</tspan>)</text>
+<text x="0" y="109" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan fill="#008000" font-weight="bold">return</tspan>&#160;np<tspan fill="#666666">.</tspan>sum((diff_traces&#160;<tspan fill="#666666">-</tspan>diff_out)<tspan fill="#666666">*</tspan><tspan fill="#666666">*</tspan><tspan fill="#666666">2</tspan>,&#160;axis<tspan fill="#666666">=</tspan><tspan fill="#666666">2</tspan>)<tspan fill="#666666">.</tspan>T</text>
+<text x="0" y="128" xml:space="preserve"></text>
+<text x="0" y="147" xml:space="preserve">&#160;&#160;&#160;&#160;<tspan fill="#008000" font-weight="bold">def</tspan>&#160;<tspan fill="#0000FF">get_errors</tspan>(<tspan fill="#008000">self</tspan>,&#160;features):</text>
+<text x="0" y="166" xml:space="preserve">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<tspan fill="#008000" font-weight="bold">return</tspan>&#160;features<tspan fill="#666666">.</tspan>mean(axis<tspan fill="#666666">=</tspan><tspan fill="#666666">0</tspan>)</text>
+<text x="0" y="185" xml:space="preserve"></text></g></svg>
